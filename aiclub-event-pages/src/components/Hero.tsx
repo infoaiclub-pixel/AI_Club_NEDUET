@@ -7,7 +7,7 @@ export default function Hero() {
 
 
   return (
-     <section className="relative min-h-screen w-full overflow-hidden">
+     <section className="relative min-h-screen lg:pt-0 pt-25 w-full overflow-hidden">
       {/* BACKGROUND — out of flow */}
       <div className="absolute inset-0 z-0">
         <HeroBG />
@@ -34,7 +34,7 @@ export default function Hero() {
       </span>
 
       {/* Title */}
-      <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-primary1 sm:text-6xl">
+      <h1 className="mb-4 text-4xl text-shadow-[0_4px_8px_rgba(0,0,0,0.1)] font-extrabold tracking-tight text-primary1 sm:text-6xl">
         AI Fest 5.0
       </h1>
 

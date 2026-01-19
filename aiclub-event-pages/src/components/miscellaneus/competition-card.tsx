@@ -26,12 +26,11 @@ export default function CompetitionCard({
     if (!el) return;
 
     const canHover = window.matchMedia("(hover: hover)").matches;
-    if (canHover) return; // desktop → CSS hover only
+    if (canHover) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => setActive(entry.isIntersecting),
       {
-        root: null,
         rootMargin: "-40% 0px -40% 0px",
         threshold: 0.01,
       }
@@ -44,13 +43,12 @@ export default function CompetitionCard({
   return (
     <div
       ref={ref}
-      className={`relative group self-start ${active ? "is-active" : ""}`}
+      className={`group self-start ${active ? "is-active" : ""}`}
     >
-      {/* Card shell */}
+      {/* CARD */}
       <div
         className="
-          rounded-3xl bg-[#FBF6EF]
-          shadow-md
+          rounded-3xl bg-[#FBF6EF] shadow-md
           transition-all duration-300
           group-hover:bg-background
           group-hover:shadow-xl
@@ -60,20 +58,19 @@ export default function CompetitionCard({
       >
         {/* Image */}
         <div className="relative h-[300px] w-full rounded-2xl p-4">
-            <div className="relative h-full w-full  rounded-xl">
-                <Image
-                src={image}
-                alt={title}
-                fill
-                className="
-                    object-cover transition-transform duration-500
-                    group-hover:scale-105
-                    group-[.is-active]:scale-105
-                    rounded-xl
-                "
-                />
-            </div>
-            </div>
+          <div className="relative h-full w-full rounded-xl overflow-hidden">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="
+                object-cover 
+               
+        
+              "
+            />
+          </div>
+        </div>
 
         {/* Content */}
         <div className="p-5 space-y-3">
@@ -81,7 +78,7 @@ export default function CompetitionCard({
             {title}
           </h3>
 
-          <p className="text-sm text-gray-600 leading-snug">
+          <p className="text-sm text-secondary1 leading-snug ">
             {description}
           </p>
 
@@ -107,32 +104,26 @@ export default function CompetitionCard({
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Seamless expanding bottom */}
-      <div
-        className="
-          pointer-events-none
-          absolute left-0 right-0 top-full z-20
-          -mt-6
-          opacity-0 translate-y-2
-          transition-all duration-300
-          group-hover:opacity-100
-          group-hover:translate-y-0
-          group-hover:pointer-events-auto
-          group-[.is-active]:opacity-100
-          group-[.is-active]:translate-y-0
-          group-[.is-active]:pointer-events-auto
-        "
-      >
-        <div className="rounded-b-3xl bg-[#F6EFE6] px-5 py-5 shadow-xl space-y-3">
-          <button className="w-full rounded-xl border border-primary2 py-3 font-semibold text-primary2 hover:bg-primary2 hover:text-white">
-            Register For This
-          </button>
+        {/* NORMAL EXPANDING SECTION */}
+        <div
+          className="
+            overflow-hidden
+            max-h-0 px-5
+            transition-[max-height,padding] duration-300 ease-out
+            group-hover:max-h-40 group-hover:pb-5
+            group-[.is-active]:max-h-40 group-[.is-active]:pb-5
+          "
+        >
+          <div className="space-y-3">
+            <button className="w-full rounded-xl border border-primary2 py-3 font-semibold text-primary2 hover:bg-primary2 hover:text-white">
+              Register For This
+            </button>
 
-          <button className="w-full rounded-xl border border-primary2 py-3 font-semibold text-primary2 hover:bg-primary2 hover:text-white">
-            View Competition Guide
-          </button>
+            <button className="w-full rounded-xl border border-primary2 py-3 font-semibold text-primary2 hover:bg-primary2 hover:text-white">
+              View Competition Guide
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import CompetitionCard from "./miscellaneus/competition-card";
 
 export default function HuntSection() {
   return (
-    <section className="relative w-full min-h-screen  bg-primary2">
+    <section className="relative w-full min-h-screen py-10 bg-primary2">
       {/* Background texture / map mask */}
       <div className="absolute inset-0">
         <Image
@@ -24,7 +24,7 @@ export default function HuntSection() {
             GAMES
           </span>
 
-          <h2 className="text-5xl font-extrabold leading-tight text-white sm:text-6xl">
+          <h2 className="text-5xl font-extrabold leading-tight text-white text-shadow-[0_4px_12px_rgba(0,0,0,0.4)] sm:text-6xl">
             THINK YOU’RE
             <br />
             GOOD AT

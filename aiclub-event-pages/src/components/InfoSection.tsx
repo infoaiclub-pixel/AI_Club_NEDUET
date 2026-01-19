@@ -26,7 +26,7 @@ export default function InfoSection() {
                 EVENT DETAILS
                 </span>
 
-            <h2 className="text-5xl font-heading font-extrabold leading-[0.95] tracking-tight text-white sm:text-9xl lg:text-[72px]">
+            <h2 className="text-5xl text-shadow-[0_4px_12px_rgba(0,0,0,0.4)] font-heading font-extrabold leading-[0.95] tracking-tight text-white sm:text-9xl lg:text-[72px]">
               SO, WHEN
               <br />
               AND WHERE

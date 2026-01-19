@@ -81,9 +81,9 @@ export default function CompetitionSection() {
       <div
         className="
           mx-auto mt-12 max-w-6xl
-          grid grid-cols-1 md:gap-10 gap-50
+          grid grid-cols-1 gap-10
           md:grid-cols-2
-          items-start
+  
           auto-rows-min
         "
       >
