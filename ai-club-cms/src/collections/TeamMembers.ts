@@ -7,25 +7,29 @@ export const TeamMembers: CollectionConfig = {
   },
   access: {
     read: ({ req }) => {
-        // Admin UI & logged-in users → full access (including deleted)
-        if (req.user) {
+      // Human users (Admin UI & logged-in users) → full access
+      if (req.user?.collection === 'users') {
         return true
-        }
+      }
 
-        // Server-to-server access → only non-deleted docs
-        const auth = req.headers.get('authorization')
-        if (auth === `Bearer ${process.env.CMS_READ_TOKEN}`) {
+      // Integration users → only non-deleted documents
+      if (req.user?.collection === 'integrations') {
         return {
-            isDeleted: {
+          isDeleted: {
             equals: false,
-            },
+          },
         }
-        }
-
-        // Everyone else → no access
-        return false
+      }
+      // Everyone else → no access
+      return false
     },
+
+    // Only human users can mutate
+    create: ({ req }) => req.user?.collection === 'users',
+    update: ({ req }) => req.user?.collection === 'users',
+    delete: ({ req }) => req.user?.collection === 'users',
   },
+
 
   fields: [
     {

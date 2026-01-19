@@ -20,7 +20,7 @@ async function getProject(slug: string): Promise<Project> {
     `${process.env.NEXT_PUBLIC_CMS_URL}/api/projects?where[slug][equals]=${slug}&depth=1`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.CMS_READ_TOKEN}`,
+        Authorization: `integrations API-Key ${process.env.CMS_API_KEY}`,
       },
       cache: "no-store",
     }

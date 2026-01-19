@@ -18,7 +18,7 @@ async function getTeamMembers(): Promise<TeamMember[]> {
     `${process.env.NEXT_PUBLIC_CMS_URL}/api/team-members?depth=1`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.CMS_READ_TOKEN}`,
+        Authorization: `integrations API-Key ${process.env.CMS_API_KEY}`,
       },
       cache: "no-store",
     }

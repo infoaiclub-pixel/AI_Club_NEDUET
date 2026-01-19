@@ -8,12 +8,10 @@ export const Projects: CollectionConfig = {
     useAsTitle: 'title',
   },
   access: {
-    read: ({ req }) => {
-      if (req.user) return true
-      const auth = req.headers.get('authorization')
-      if (auth === `Bearer ${process.env.CMS_READ_TOKEN}`) return true
-      return false
-    },
+    read: ({ req }) => Boolean(req.user),
+      create: ({ req }) => req.user?.collection === 'users',
+      update: ({ req }) => req.user?.collection === 'users',
+      delete: ({ req }) => req.user?.collection === 'users'
   },
   hooks: {
     beforeChange: [

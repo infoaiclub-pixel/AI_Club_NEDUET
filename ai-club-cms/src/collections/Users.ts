@@ -9,32 +9,17 @@ export const Users: CollectionConfig = {
   },
 
   access: {
-    read: ({ req }) => {
-      // Admin UI
-      if (req.user?.role === 'admin') return true
+    read: ({ req }) => Boolean(req.user),
 
-      // Token-based public reads (blogs author)
-      const auth = req.headers.get('authorization')
-      if (auth === `Bearer ${process.env.CMS_READ_TOKEN}`) return true
-
-      // Self-read
-      if (req.user) return true
-
-      return false
-    },
-
-    create: ({ req }) => {
-      if (!req.user) return true
-      return req.user.role === 'admin'
-    },
+    create: ({ req }) => req.user?.collection === 'users' && req.user.role === 'admin',
 
     update: ({ req, id }) => {
-      if (!req.user) return false
+      if (req.user?.collection !== 'users') return false
       if (req.user.role === 'admin') return true
       return req.user.id === id
     },
-
-    delete: ({ req }) => req.user?.role === 'admin',
+    
+    delete: ({ req }) => req.user?.collection === 'users' && req.user.role === 'admin',
   },
 
   fields: [

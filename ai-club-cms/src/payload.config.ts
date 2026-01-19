@@ -14,6 +14,7 @@ import { Blogs } from './collections/Blogs'
 import { TeamMembers } from './collections/TeamMembers'
 import { Projects } from './collections/Projects'
 import { Categories } from './collections/Categories'
+import { Integrations } from './collections/Integrations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -37,6 +38,7 @@ export default buildConfig({
   TeamMembers,
   Projects,
   Categories,
+  Integrations
   ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [

@@ -29,7 +29,7 @@ async function getBlog(slug: string): Promise<Blog> {
     `${process.env.NEXT_PUBLIC_CMS_URL}/api/blogs?where[slug][equals]=${slug}&depth=3`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.CMS_READ_TOKEN}`,
+        Authorization: `integrations API-Key ${process.env.CMS_API_KEY}`,
       },
       cache: "no-store",
     }

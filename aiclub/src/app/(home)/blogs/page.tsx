@@ -34,7 +34,7 @@ async function getCategories(): Promise<Category[]> {
     `${process.env.NEXT_PUBLIC_CMS_URL}/api/categories?sort=order`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.CMS_READ_TOKEN}`,
+        Authorization: `integrations API-Key ${process.env.CMS_API_KEY}`,
       },
       cache: "no-store",
     }
@@ -58,7 +58,7 @@ async function getBlogs(
     `${process.env.NEXT_PUBLIC_CMS_URL}/api/blogs?depth=2&sort=-publishedAt&limit=${limit}${where}`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.CMS_READ_TOKEN}`,
+        Authorization: `integrations API-Key ${process.env.CMS_API_KEY}`,
       },
       cache: "no-store",
     }
